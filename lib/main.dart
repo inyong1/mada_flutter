@@ -22,7 +22,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _madaUnofficialPlugin = MadaUnofficial(_madaCallback);
-  
   }
 
   void _madaCallback(String? callback) {
@@ -30,8 +29,6 @@ class _MyAppState extends State<MyApp> {
       _callbacks.add(callback);
     });
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +44,13 @@ class _MyAppState extends State<MyApp> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextField(controller: _amountController)),
+                  Expanded(
+                      child: TextField(
+                    controller: _amountController,
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
+                  )),
                   ElevatedButton(
                       onPressed: () {
                         final amount = double.tryParse(_amountController.text.trim()) ?? 0.0;
